@@ -16,3 +16,7 @@ void systick_1ms(void){
 			systick_1ms();
 		}
 	}
+
+void systick_disable(void){
+  NVIC_ST_CTRL_R = 0;
+	}
