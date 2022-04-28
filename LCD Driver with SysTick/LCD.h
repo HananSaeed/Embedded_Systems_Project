@@ -18,3 +18,4 @@ void LCD_Command(unsigned char cmd);
 void Give_Data_to_LCD(unsigned char data);
 void LCD_goToRowColumn(uint8_t row,uint8_t col);
 void CountDown_59to0 (void);
+void CountDown(unsigned char time);
