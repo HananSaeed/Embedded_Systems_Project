@@ -111,7 +111,7 @@ void LCD_goToRowColumn(uint8_t row,uint8_t col)
 }
 
 //Function that counts down 
-void CountDown_59to0 (unsigned char time)
+void CountDown(unsigned char time)
 {
 	
 	while(time)
