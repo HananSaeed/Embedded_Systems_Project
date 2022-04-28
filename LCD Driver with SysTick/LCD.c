@@ -110,14 +110,14 @@ void LCD_goToRowColumn(uint8_t row,uint8_t col)
 	LCD_Command(Address | Set_Cursour_Location); 
 }
 
-//Function that counts down from 59 till 0
-void CountDown_59to0 (void)
+//Function that counts down 
+void CountDown_59to0 (unsigned char time)
 {
-	uint8_t count = 59;
 	
-	while(count)
+	while(time)
 	{
-		LCD_displayCharacter(count);
+		LCD_displayCharacter(time);
 		SysTick_wait10ms(100);  //10ms x 100 = 1second
+		time --;
 	}
 }
