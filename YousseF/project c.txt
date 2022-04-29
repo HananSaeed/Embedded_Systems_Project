@@ -1,0 +1,45 @@
+#include "io.h"
+#define NVIC_ST_CTRL_R (*((volatile unsigned int *)0xE000E010))
+#define NVIC_ST_RELOAD_R (*((volatile unsigned int *)0xE000E014))
+#define NVIC_ST_CURRENT_R (*((volatile unsigned int *)0xE000E018))
+	
+void systick_1sec(void){
+	NVIC_ST_CTRL_R = 0;
+	NVIC_ST_RELOAD_R = 0x04C4B400 -1; 
+	NVIC_ST_CURRENT_R = 0;
+	NVIC_ST_CTRL_R = 0X05;
+	while ((NVIC_ST_CTRL_R  & 0x00010000) == 0){};
+	}
+
+	void time(unsigned int delay){
+		unsigned int i;
+		for (i=0; i<delay; i++){
+			systick_1sec();
+		}
+	}
+	
+
+	void systick_disable(void){
+  NVIC_ST_CTRL_R = 0;
+	}
+	
+	
+	unsigned char Key_button; 
+	unsigned char Seconds;
+	int main(){
+		
+		while (1){
+			Key_button = KeyPad_In();
+			if (Key_button = 0X41){
+				Seconds = 60;
+				LCD (Popcorn);
+				LCD (CountDown);
+				time (Seconds);
+				systick_disable ();
+				lCD_Clear (); 
+			}
+		}
+	}
+				
+				
+				
