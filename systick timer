@@ -9,14 +9,16 @@ void systick_1ms(void){
 	NVIC_ST_CTRL_R = 0X05;
 	while ((NVIC_ST_CTRL_R  & 0x00010000) == 0){};
 	}
-
+	
+void systick_disable(void){
+  NVIC_ST_CTRL_R = 0;
+	}
+	
 	void time(unsigned int delay){
 		unsigned int i;
 		for (i=0; i<delay; i++){
 			systick_1ms();
 		}
+		systick_disable();
 	}
 
-void systick_disable(void){
-  NVIC_ST_CTRL_R = 0;
-	}
