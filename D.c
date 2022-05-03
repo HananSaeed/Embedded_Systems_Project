@@ -70,23 +70,32 @@ button1 = SW1_input();
 /*void cookingtime() {
 	//LCD_out("“Cooking Time?”");
 	int n = 0;
-	int arr[4] = { 0,0,0,0 };
+	char arr[4] = { '0','0','0','0' };
 	while (n<4) {
-   EdgeCounter_Init();
 		//arr[n] = keyPadin();
 		//LCD_out(arr[n]);
 		n++;
 }
 		for (int i = 4 - n; i > 0;i--) { //this part should be added to SW2 code
-		int temp = arr[3];
+		char temp = arr[3];
 		for (int i = 3; i > 0; i--){
 			arr[i] = arr[i - 1];
 	}
 		arr[0] = temp;
 	}
-	int sec = (arr[0] * 10 + arr[1]) * 60 + (arr[2] * 10 + arr[3]);
-	countdown(sec);
+	int sec = ((arr[0]-'0') * 10 +(arr[1]-'0')) * 60 + ((arr[2]-'0') * 10 + (arr[3]-'0'));
+	
+	char arr1[4] = {'0','0' ,'0' ,'0' };
+  int index = 4;
+	while (sec) {
+
+        arr1[--index] = sec  % 10 + '0';//3-->a[3] = '3' 8--> arr[2]='8' 
+
+        sec /= 10;//8-0
+    }
+	countdown(arr1);
     
 	}
+	
  */
 
