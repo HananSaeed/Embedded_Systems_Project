@@ -29,7 +29,7 @@ unsigned char keypad_getkey(void)
 	int i, check;
 	int output_B[4] = {0x0E, 0x0D, 0x0B, 0x07};
 	GPIO_PORTB_DATA_R = 0;//Enable all rows
-	time(150);
+	Delay_ms(150000);
 		switch (GPIO_PORTC_DATA_R & 0xF0){
 	case 0xF0: return 0;
 	case 0xE0: col=0; break; // key in column 0
@@ -41,7 +41,7 @@ unsigned char keypad_getkey(void)
 	for (i=0 ;i<4; i++)
 	{
 	GPIO_PORTB_DATA_R = output_B[i];
-	time(20);                     // wait for signal to settle 
+	Delay_ms(20000);                  // wait for signal to settle 
 check = GPIO_PORTC_DATA_R & 0xF0;
 if (check != 0xF0) break;
 	}
