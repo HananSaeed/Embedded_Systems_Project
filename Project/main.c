@@ -22,7 +22,7 @@ while(1)
 		//Part A
 		Key_Input = keypad_getkey();
 
-		if (Key_Input == 'A'){
+	if (Key_Input == 'A'){
 			char Seconds[] = "0059";
 			LCD_displayCharacter('A');
 			time(2);
@@ -35,8 +35,113 @@ while(1)
 			CountDown(Seconds);
 			LCD_Command(Clear_Display);
 			
+			}
+	
+	else if (Key_Input == 'B') {
+	   int w =0;
+  	   int i=0;
+	   int x=0;
+	   char arr[2]; 
+	   char arr1[4] = { '0','0' ,'0' ,'0' };
+	   int index = 4;
+	   LCD_displayCharacter('B');
+	   time(2);
+	   LCD_Command(Clear_Display);
 			
+
+	 do{
+  	LCD_displayString("Beef weight");
+        time(2);
+        LCD_Command(Clear_Display);
+    
+   	while (i<2) {
+	x = keypad_getkey();
+
+	if(x != 0){
+		arr[i]=x;
+		LCD_displayCharacter(arr[i]);
+		i++;
+		}
 	}
+	i=0;
+        w = (arr[0]-'0') * 10 +(arr[1]-'0');
+	      if ( w>=1 && w <=9){
+			LCD_Command(Clear_Display);//clear LCD
+			break;
+	        }
+
+		else {
+                LCD_Command(Clear_Display);
+		LCD_displayString("Err");
+		time(2);
+		LCD_Command(Clear_Display);		
+		}
+
+
+	}	 while( w > 9);
+
+        w = w*30;    
+	while (w) {
+        arr1[--index] = w  % 10 + '0';
+        w /= 10;
+    }
+
+	CountDown(arr1);
+
+}
+		else if (Key_Input == 'C') {
+			int w =0;
+  	  int i=0;
+	  int x=0;
+	  char arr[2]; 
+	  char arr1[4] = { '0','0' ,'0' ,'0' };
+	  int index = 4;
+	  LCD_displayCharacter('C');
+	  time(2);
+	  LCD_Command(Clear_Display);
+			
+
+	 do{
+  		LCD_displayString("Chicken weight");
+		time(2);
+		LCD_Command(Clear_Display);
+
+    
+   	while (i<2) {
+		
+   	x = keypad_getkey();
+
+		if(x != 0){
+		arr[i]=x;
+		LCD_displayCharacter(arr[i]);
+		i++;
+		}   }
+        i=0;
+        w = (arr[0]-'0') * 10 +(arr[1]-'0');
+	       if ( w>=1 && w <=9){
+		LCD_Command(Clear_Display);//clear LCD
+		break;
+                 }
+
+		else {
+                LCD_Command(Clear_Display);
+		LCD_displayString("Err");
+		time(2);
+		LCD_Command(Clear_Display);		
+		}
+
+
+	} while( w > 9);
+
+        w = w*30;    
+	while (w) {
+        arr1[--index] = w  % 10 + '0';
+        w /= 10;
+    }
+
+	CountDown(arr1);
+
+}
 	//Part D
 		else if (Key_Input == 'D')
 	{
@@ -46,7 +151,7 @@ while(1)
 		int sec;
 		int i;
 		char x;
-	  char arr[4] = { '0','0','0','0' };
+	        char arr[4] = { '0','0','0','0' };
 
 		LCD_displayCharacter('D');
 		time(2);
@@ -58,17 +163,12 @@ while(1)
 
 	
 	while (n<4) {
-   	x = keypad_getkey();
-		if(x != 0){
+   	    x = keypad_getkey();
+	   if(x != 0){
 		arr[n]=x;
 		LCD_displayCharacter(arr[n]);
 		n++;
-			if(n==2){
-				time(1);
-				LCD_displayCharacter(':');
-				time(1);
-			}
-		}
+	        }
     }
 		time(3);
 		LCD_Command(Clear_Display);
@@ -83,9 +183,9 @@ while(1)
 //		for (i = 3; i > 0; i--){        //this part shift one time to the right to get arr={0,1,2,3}
 //			arr[i] = arr[i - 1];
 //	}
-//		arr[0] = temp;
+//		         arr[0] = temp;
 //	}
-	 sec = ((arr[0]-'0') * 10 +(arr[1]-'0')) * 60 + ((arr[2]-'0') * 10 + (arr[3]-'0'));// to convert the time to only seconds
+	sec = ((arr[0]-'0') * 10 +(arr[1]-'0')) * 60 + ((arr[2]-'0') * 10 + (arr[3]-'0'));// to convert the time to only seconds
 
 //To return the value to char
 	while (sec) {
