@@ -2,7 +2,7 @@
 #include "stdint.h"
 #include "LCD.h"
 
-void RGB_Output(unsigned char led);
+
 volatile unsigned long FallingEdges = 0;
 void EdgeCounter_Init1(void){
 FallingEdges = 0;
