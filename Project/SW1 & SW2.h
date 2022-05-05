@@ -1,9 +1,11 @@
 #include "tm4c123gh6pm.h"
 #include "stdint.h"
 #include "LCD.h"
-
-
+void EnableInterrupts(void);
+void WaitForInterrupt(void);
+void RGB_Output(unsigned char led);
 volatile unsigned long FallingEdges = 0;
+volatile unsigned long counter =0;
 void EdgeCounter_Init1(void){
 FallingEdges = 0;
 GPIO_PORTF_LOCK_R = 0X4C4F434B;
@@ -45,23 +47,48 @@ GPIO_PORTF_IM_R |= 0x10;//arm interrupt on PF4
 NVIC_EN0_R = 0x40000000;
 EnableInterrupts();//clear the I bit
 }
-	
-unsigned int counter = 0x00;
+void RGBLED_Init(){
+		SYSCTL_RCGCGPIO_R |=0X20;
+		while ((SYSCTL_PRGPIO_R & 0x20) == 0){}
+		GPIO_PORTF_LOCK_R = 0X4C4F434B;
+		GPIO_PORTF_CR_R |= 0x0E;
+    GPIO_PORTF_AMSEL_R &= ~0x0E;		
+		GPIO_PORTF_PCTL_R &= ~0x000FFF0;
+		GPIO_PORTF_AFSEL_R &=~0x0E;
+		GPIO_PORTF_DIR_R |= 0x0E;
+		GPIO_PORTF_DEN_R |=0x0E;
+		GPIO_PORTF_DATA_R &= ~0x0E;
+		}
+void RGB_Output(unsigned char led){
+GPIO_PORTF_DATA_R &= ~0x0E;
+GPIO_PORTF_DATA_R |= led;
+
+}
 void GPIOF_Handler(void)
 {
-  GPIO_PORTF_ICR_R = 0x01;
-	counter = 0x00;
-	
-	if((GPIO_PORTF_MIS_R & 0x10) && counter ==0x00){ //SW1 presses for the first time (pause)
-	GPIO_PORTF_ICR_R = 0x10; // acknowledge flag4
-	counter = counter + 1;
+	GPIO_PORTF_ICR_R = 0x01;
+  counter = 0x00;
+
+
+
+if((GPIO_PORTF_MIS_R & 0x10) && counter ==0x00){
+
+GPIO_PORTF_ICR_R = 0x10; // acknowledge flag4
+	Delay_ms(100);
+counter = counter + 1;
+
 while(1){
 
 if((GPIO_PORTF_MIS_R & 0x10)&& counter == 0x01) // SW1 pressed for second time (clear)
 {
-GPIO_PORTF_ICR_R = 0x10;
-LCD_Command(Clear_Display);    //clear();
-break;
+	GPIO_PORTF_ICR_R = 0x10;
+	LCD_Command(Clear_Display);  
+	RGB_Output(0x02);
+  EdgeCounter_Init2(); 
+  EdgeCounter_Init1();	
+
+
+  break;
 }
 if (GPIO_PORTF_MIS_R & 0x01 && counter == 0x01) //SW2
 {
@@ -71,5 +98,4 @@ break;
 
 }
 }
-
 }
