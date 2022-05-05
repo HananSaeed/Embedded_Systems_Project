@@ -64,13 +64,12 @@ GPIO_PORTF_DATA_R &= ~0x0E;
 GPIO_PORTF_DATA_R |= led;
 
 }
+
+
 void GPIOF_Handler(void)
 {
-	GPIO_PORTF_ICR_R = 0x01;
+  GPIO_PORTF_ICR_R = 0x01;
   counter = 0x00;
-
-
-
 if((GPIO_PORTF_MIS_R & 0x10) && counter ==0x00){
 
 GPIO_PORTF_ICR_R = 0x10; // acknowledge flag4
@@ -83,12 +82,9 @@ if((GPIO_PORTF_MIS_R & 0x10)&& counter == 0x01) // SW1 pressed for second time (
 {
 	GPIO_PORTF_ICR_R = 0x10;
 	LCD_Command(Clear_Display);  
-	RGB_Output(0x02);
-  EdgeCounter_Init2(); 
-  EdgeCounter_Init1();	
-
-
-  break;
+        EdgeCounter_Init2(); 
+        EdgeCounter_Init1();	
+         break;
 }
 if (GPIO_PORTF_MIS_R & 0x01 && counter == 0x01) //SW2
 {
