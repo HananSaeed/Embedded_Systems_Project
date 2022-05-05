@@ -169,6 +169,8 @@ while(1)
 		arr[n]=x;
 		LCD_displayCharacter(arr[n]);
 		n++;
+		if (GPIO_PORTF_DATA_R & 0x10 == 0x10)
+			break;
 	        }
     }
 		time(3);
