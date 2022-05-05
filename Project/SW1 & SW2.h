@@ -51,7 +51,7 @@ void GPIOF_Handler(void)
 {
   GPIO_PORTF_ICR_R = 0x01;
 	counter = 0x00;
-	counter = 0x00;
+	
 	if((GPIO_PORTF_MIS_R & 0x10) && counter ==0x00){ //SW1 presses for the first time (pause)
 	GPIO_PORTF_ICR_R = 0x10; // acknowledge flag4
 	counter = counter + 1;
