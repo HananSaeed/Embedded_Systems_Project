@@ -1,20 +1,20 @@
 else if (Key_Input == 'B') {
-			int w =0;
-  	  int i=0;
-			int x=0;
-		  char arr[2]; 
-			char arr1[4] = { '0','0' ,'0' ,'0' };
-			int index = 4;
-				LCD_displayCharacter('B');
-			  time(2);
-			  LCD_Command(Clear_Display);
+	int w =0;
+	int i=0;
+	int x=0;
+  	char arr[2]; 
+	char arr1[4] = { '0','0' ,'0' ,'0' };
+	int index = 4;
+	LCD_displayCharacter('B');
+  	time(2);
+        LCD_Command(Clear_Display);
 			
 
 	 do{
-  		LCD_displayString("Beef weight");
-			  time(2);
+	LCD_displayString("Beef weight");
+  	time(2);
 
-			  LCD_Command(Clear_Display);
+        LCD_Command(Clear_Display);
 
     
    	while (i<2) {
