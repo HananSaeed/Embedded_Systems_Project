@@ -1,0 +1,30 @@
+case 'D' :
+//			LCD_displayStringRowColumn(0,1,"Cooking Time?");
+//			SysTick_Wait1s(2);
+//			LCD_clearScreen();	
+//				
+//			LCD_displayStringRowColumn(1,6,"00:00");	
+//			CookingTimeCaseD[0] = KEYPAD_Getkey();
+//			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[0]);
+//				
+//			CookingTimeCaseD[1] = KEYPAD_Getkey();
+//			LCD_displayCharRowColumn(1,9,CookingTimeCaseD[0]);
+//			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[1]);
+//			
+//			CookingTimeCaseD[2] = KEYPAD_Getkey();
+//			LCD_displayCharRowColumn(1,7,CookingTimeCaseD[0]);
+//			LCD_displayCharRowColumn(1,9,CookingTimeCaseD[1]);
+//			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[2]);
+//		  
+//			CookingTimeCaseD[3] = KEYPAD_Getkey();
+//			LCD_displayCharRowColumn(1,6,CookingTimeCaseD[0]);
+//			LCD_displayCharRowColumn(1,7,CookingTimeCaseD[1]);
+//			LCD_displayCharRowColumn(1,9,CookingTimeCaseD[2]);
+//			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[3]);
+//				
+//			CookingTimeInSecs = ((CookingTimeCaseD[0] - '0') * 600) + ((CookingTimeCaseD[1] - '0') * 60) + ((CookingTimeCaseD[2] - '0') * 10) + ((CookingTimeCaseD[3] - '0'));
+//	    Display_Time(CookingTimeInSecs);
+//      LCD_clearScreen();			
+//	
+//			
+//
