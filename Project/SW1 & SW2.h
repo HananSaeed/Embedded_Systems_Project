@@ -1,6 +1,7 @@
 #include "tm4c123gh6pm.h"
 #include "stdint.h"
 #include "LCD.h"
+enum InterruptStates{Counter, ClearLCD, ReturnMain};
 void EnableInterrupts(void);
 void WaitForInterrupt(void);
 void RGB_Output(unsigned char led);
@@ -95,3 +96,37 @@ break;
 }
 }
 }
+/*void GPIOF_Handler(void)
+{
+
+ if((GPIO_PORTF_MIS_R & 0x10) && InterruptStates ==Counter){
+	 time(1);
+   if((GPIO_PORTF_DATA_R & 0x11)==0x01){
+	    RGB_Output(0x00);
+	    LCD_Command(Clear_Display);	
+	    GPIO_PORTF_ICR_R = 0x10;
+      Delay_ms(100);		 
+    	EdgeCounter_Init1();
+		  
+    	main();
+		
+				}
+    if ((GPIO_PORTF_MIS_R & 0x11) ==0x11 ){
+       
+       GPIO_PORTF_ICR_R = 0x11;
+       Delay_ms(100);
+
+        }
+
+   }
+
+else if((GPIO_PORTF_MIS_R & 0x10) && InterruptStates == ClearLCD){
+	InterruptStates =ReturnMain;
+	LCD_Command(Clear_Display);
+	GPIO_PORTF_ICR_R = 0x10; 
+
+}
+else if((GPIO_PORTF_MIS_R & 0x10)){GPIO_PORTF_ICR_R = 0x10; }
+if(GPIO_PORTF_MIS_R & 0x01){GPIO_PORTF_ICR_R = 0x01;}
+
+}*/
