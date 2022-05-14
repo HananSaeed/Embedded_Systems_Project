@@ -8,6 +8,7 @@ void RGB_Output(unsigned char led);
 volatile unsigned long FallingEdges = 0;
 volatile unsigned long counter =0;
 void EdgeCounter_Init1(void){
+SYSCTL_RCGC2_R |= 0x00000020; //activate port F
 FallingEdges = 0;
 GPIO_PORTF_LOCK_R = 0X4C4F434B;
 GPIO_PORTF_CR_R |= 0x01;
