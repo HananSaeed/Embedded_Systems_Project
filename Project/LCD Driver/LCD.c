@@ -117,34 +117,3 @@ void LCD_goToRowColumn(char row,char col)
 }
 
 //Function that counts down 
-void CountDown(char *time)
-{
-	//0059
-	RGB_Output(0x0E);
-	while(time[0] != ('0' - 1))
-	{
-		while(time[1] != ('0' - 1))
-		{
-			while(time[2] != ('0' - 1))
-			{
-					while(time[3] != ('0' - 1))
-				{
-					time[4]='\0';
-					LCD_displayString(time);
-					systick_1sec();
-					LCD_Command(Clear_Display);
-					time[3]--;
-				}
-				time[3] = '9';
-				time[2]--;			
-			}
-			time[2] = '9';
-			time[1]--;
-			
-		}
-		time[1] = '9';
-		time[0]--;
-			
-	}
-}
-
