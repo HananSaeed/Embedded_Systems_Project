@@ -6,11 +6,15 @@
 #include "Systick.h"
 #include "Function.h"
 #define IDLE  1
-
+#define POPCORN 'A'
+#define BEEF 'B'
+#define CHICKEN 'C'
+#define CookingTime 'D'
 
 int main()
 {
-    EdgeCounter_Init1(); 
+	
+  EdgeCounter_Init1(); 
 	EdgeCounter_Init2(); 
   RGBLED_Init();
 	SysTick_Init();
@@ -23,34 +27,29 @@ int main()
 	time(2);
 while(IDLE)
   { 
-				unsigned char Key_Input;
-
-
-		Key_Input = keypad_getkey();
-	
-		if (Key_Input == 'A'){
+unsigned char Key_Input;
+Key_Input = keypad_getkey();
+if (Key_Input == POPCORN){
 		A();
  blink();	
 			
 	}
-		else if (Key_Input == 'B') {
+else if (Key_Input == BEEF) {
    B();
-			 blink();
+ blink();
 
 }
-	else if (Key_Input == 'C') {
-		C();
-		 blink();
+else if (Key_Input == CHICKEN) {
+C();
+ blink();
 	
   }
-		else if (Key_Input == 'D')
-	{
-		D();
-	 blink();
+else if (Key_Input == CookingTime){
+D();
+ blink();
 
-		
 } 
  
 }
-	
+	return 1;
 	}
