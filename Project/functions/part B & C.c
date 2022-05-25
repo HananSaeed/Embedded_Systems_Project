@@ -28,7 +28,7 @@ void B() {
 	}
 	
 		 i=0;
-		if((Data[1] !='\0')&&(Data[0]!=0)) 
+		if((Data[1] !='\0')||(Data[0]!=0)) 
 			{
     LCD_Command(Clear_Display);
 		LCD_displayString("Err");
