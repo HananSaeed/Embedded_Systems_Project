@@ -30,3 +30,11 @@ void SW3_init(void)
 	EnableInterrupts();
 
 }
+void GPIOE_Handler(void)
+{
+	
+	GPIO_PORTE_ICR_R = 0x04;
+
+	GPIO_PORTE_DATA_R = 0x00;
+	 
+}
